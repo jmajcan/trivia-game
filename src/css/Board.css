@@ -1,0 +1,33 @@
+.board {
+  display: flex;
+  height: 85%;
+  background: #060ce9;
+}
+
+.player-list{
+  height: 15%;
+  align-self: initial;
+}
+
+.close {
+  position: fixed;
+  right: 2%;
+  top: 2%;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: yellow;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 16px;
+  color: white;
+  background: #060ce9;
+}

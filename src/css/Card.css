@@ -1,0 +1,32 @@
+.card {
+  border: 0.2em solid black;
+  height: calc(16.6% - 0.4em);
+  background: #060ce9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: yellow;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 2px 2px black;
+  box-sizing: border-box;
+}
+
+.card.visited{
+  background: grey;
+  color: grey;
+  pointer-events: none;
+}
+
+.header{
+  color: white; 
+}
+
+.card:not(.header):hover {
+  border: 0.2em solid yellow;
+  background: yellow;
+  color: #060ce9;
+  text-shadow: 2px 2px white;
+  cursor: pointer;
+}
