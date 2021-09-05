@@ -6,7 +6,7 @@ This is a project I worked on in university for a workshop when I was a part of 
 To get the start-up template follow the instructions below:
 
 * Open up the terminal for Linux and MacOS or Git Bash for Windows
-* Make a directory for the workshop project in you desired location `> mkdir react-workshop`
+* Make a directory for the workshop project in you desired location `> mkdir react-code-example`
 * Clone the repo using HTTP 
 ```bash
 git clone https://github.com/jmajcan/trivia-game.git
