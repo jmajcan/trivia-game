@@ -9,6 +9,11 @@
   align-self: initial;
 }
 
+.player-input img{
+  height: 25%;
+  width: 12.5%;
+}
+
 .close {
   position: fixed;
   right: 2%;

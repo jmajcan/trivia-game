@@ -1,4 +1,5 @@
 import React from 'react';
+import PlayerIcon from '../images/player-icon.png';
 
 const PlayerInput = ({ name, score, setName, setScore }) => {
   const onChange = (event) => {
@@ -12,6 +13,7 @@ const PlayerInput = ({ name, score, setName, setScore }) => {
         value={name}
         onChange={onChange}
       />
+      <img src={PlayerIcon} alt="PlayerIcon" />
       <div className="player-score">
         <button onClick={() => {setScore('sub')}} className="minus"> - </button>
         <label>${score}</label>
