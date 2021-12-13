@@ -44,8 +44,8 @@ class App extends Component {
   }
 
   setPlayerScore = (index, operation) => {
-    const currValue = get(this.state, `modalData.value`, 0);
-    const scoreChange = operation === 'add' ? currValue : (-1 * currValue);
+    const { points: currValue } = this.state.modalData;
+    const scoreChange = operation === 'add' ? currValue || 0 : (-1 * (currValue || 0));
 
     this.setState(prevState => {
       let players = prevState.players;
@@ -64,7 +64,7 @@ class App extends Component {
           name={player.name}
           score={player.score}
           setName={(name) => this.setPlayerName(index, name)}
-          setScore={(operation) => this.setPlayerScore(index, operation)}
+          setScore={(operation) => this.state.modalData && this.setPlayerScore(index, operation)}
         />
       )
     })
