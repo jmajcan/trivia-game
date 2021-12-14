@@ -1,30 +1,68 @@
-//parent component that will hold the cards
-import React, { Component } from "react"
-import Category from "./Category"
-import categoryData from "../constants/categories"
-import '../css/Board.css'
+	//parent component that will hold the cards
+	import React, { Component } from "react"
+	import Category from "./Category"
+	import '../css/Board.css'
 
 class Board extends Component {
-  render() {
-    const { setModal } = this.props
+	constructor() {
+		super()
+		this.state = {
+			category: [],
+			questions: {},
+			error: {
+				errStatus: null,
+				errMessage: ''
+			}
+		}
+	}
 
-    const categoryList = categoryData.map((category, index) => {
-      return (
-        <Category
-          key={index}
-          name={category.name}
-          questions={category.questions}
-          modalFn={setModal}
-        />
-      )
-    })
+	componentDidMount() {
+		this.getCategories();
+	}
 
-    return (
-      <div className="board">
-        { categoryList }
-      </div>
-    )
-  }
+	getCategories = async () => {
+		await fetch('http://localhost:5000/categories/')
+			.then((response) => {
+				return response.json()
+			})
+			.then((resp) => {
+				if(resp){
+					this.setState({
+						category: resp
+					})
+				} else {
+					throw (resp);
+				}
+			})
+			.catch((error) => {
+				this.setState({
+					error: {
+						errStatus: error.status,
+						errMessage: error.statusText
+					}
+				});
+			});
+	}
+
+	render() {
+		const { setModal } = this.props
+		const categoryList = this.state.category.map(({category_name, category_id}) => {
+			return (
+				<Category
+					key={category_id}
+					catId={category_id}
+					name={category_name}
+					modalFn={setModal}
+				/>
+			)
+		})
+
+		return (
+		<div className="board">
+			{ categoryList }
+		</div>
+		)
+	}
 }
 
 export default Board
