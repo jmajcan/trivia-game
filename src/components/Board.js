@@ -18,7 +18,6 @@ class Board extends Component {
 
 	componentDidMount() {
 		this.getCategories();
-		this.getQuestions();
 	}
 
 	getCategories = async () => {
@@ -30,30 +29,6 @@ class Board extends Component {
 				if(resp){
 					this.setState({
 						category: resp
-					})
-				} else {
-					throw (resp);
-				}
-			})
-			.catch((error) => {
-				this.setState({
-					error: {
-						errStatus: error.status,
-						errMessage: error.statusText
-					}
-				});
-			});
-	}
-
-	getQuestions = async () => {
-		await fetch('http://localhost:5000/questions/')
-			.then((response) => {
-				return response.json()
-			})
-			.then((resp) => {
-				if(resp){
-					this.setState({
-						questions: resp
 					})
 				} else {
 					throw (resp);
